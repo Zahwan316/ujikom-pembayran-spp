@@ -169,7 +169,7 @@ router.route("/auth/petugas/:token")
                         message:"Data berhasil diambil",
                         data:datapetugas,
                         method:req.method,
-                        role:"petugas"
+                        role:datapetugas.level_id === 1 ? "admin" : "petugas"
                     })
                 }
                 else{

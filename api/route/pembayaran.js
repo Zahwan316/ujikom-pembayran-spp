@@ -138,7 +138,10 @@ router.route("/pembayaran/:id")
 router.route("/history/delete")
     .delete(async(req,res) => {
         try{
-            const deleteAll = await Pembayaran.destroy();
+            const deleteAll = await Pembayaran.destroy({
+                where:{},
+                truncate:true
+            });
             res.status(200).json({
                 message:'Semua Data berhasil dihapus',
                 method:req.method,

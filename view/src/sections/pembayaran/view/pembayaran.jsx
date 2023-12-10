@@ -76,7 +76,7 @@ const PembayaranView = (props) => {
         let siswa_sppid = findSiswa.id_spp
         const dataspp = spp.find(item => item.id_spp === siswa_sppid)
         setforminput("id_spp",dataspp.id_spp)
-        settahunspp(dataspp.tahun)
+        settahunspp(dataspp.nominal)
         console.log(dataspp)
 
         const date = new Date()
@@ -132,13 +132,16 @@ const PembayaranView = (props) => {
             />
           </Box>
           <Box className="flex flex-col mb-4">
-            <FormLabel className='mb-2'>SPP Tahun</FormLabel>
+            <FormLabel className='mb-2'>Nominal SPP</FormLabel>
             <TextField
               type="number"
               size="small"
               disabled
               id="outlined-disabled"
               name="id_spp"
+              InputProps={{
+                startAdornment:<InputAdornment position='start'>Rp</InputAdornment>
+              }}
               value={tahunspp}
             />
           </Box>

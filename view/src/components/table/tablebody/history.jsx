@@ -15,8 +15,6 @@ const HistoryTableBody = (props) => {
   const akun = useAkunStore((state) => state.akun)
   const role = useAkunStore((state) => state.role)
   const doc = new jsPDF()
-  const [updater,setupdater] = useState()
-  const [isload,setisload] = useState(false)
 
   const generateLaporan = (id) => {
     const data = {}
@@ -43,7 +41,7 @@ const HistoryTableBody = (props) => {
     data.Jumlah_Bayar = findPembayaran.jumlah_bayar
 
     
-    doc.text(`Laporan pembayaran dari siswa bernama ${data.Nama} : `,10,10)
+    doc.text(`Laporan Pembayaran`,80,10)
     let index = 0;
     for(const key in data){
       const text = `${index + 1}. ${key} : ${data[key]}`;
@@ -56,7 +54,7 @@ const HistoryTableBody = (props) => {
       doc.text(text,10,20 +  (index * 10));
     }) */
 
-    doc.save("laporan-2023")
+    doc.save(`laporan-pembayaran-${data.Nama}`)
   }
 
   const [open,setopen] = useState({})
@@ -99,12 +97,12 @@ const HistoryTableBody = (props) => {
               </>  
             }
             <TableCell>{item.tgl_bayar}</TableCell>
-            <TableCell>{spp.map(items => items.id_spp === item.id_spp && items.tahun)}</TableCell>
+            <TableCell>Rp{spp.map(items => items.id_spp === item.id_spp && props.formatharga(items.nominal))}</TableCell>
             <TableCell>Rp{props.formatharga(item.jumlah_bayar)}</TableCell>
             <TableCell>{petugas.map(items => items.id_petugas == item.id_petugas && items.nama_petugas)}</TableCell>
             
             {
-              akun.level_id === 3 &&
+              akun.level_id === 1 &&
               <>
                 <TableCell align="right">
                   <IconButton onClick={(e) => handleOpenMenu(e,item.id_pembayaran)}>

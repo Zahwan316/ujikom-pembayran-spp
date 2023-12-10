@@ -29,7 +29,7 @@ const SiswaTableBody = (props) => {
             {
                 kelas.map((items) =>
                   items.id_kelas === item.id_kelas &&
-                   <TableCell>{items.nama_kelas}</TableCell>
+                   <TableCell key={index}>{items.nama_kelas}</TableCell>
                   
                 )
             }
@@ -37,7 +37,7 @@ const SiswaTableBody = (props) => {
             {
                 spp.map((items) => 
                   items.id_spp === item.id_spp &&
-                  <TableCell>{items.tahun}</TableCell>
+                  <TableCell key={index}>{items.tahun}</TableCell>
                 )
             }
             <TableCell align="right">

@@ -9,10 +9,12 @@ import HistoryPage from 'src/pages/history';
 import HistoryTableBody from './tablebody/history';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import useAkunStore from '../../../state/akun';
 
 
 const TableMainComponent = (props) => {
   const [updater,setupdater] = useState()
+  const role = useAkunStore((state) => state.role)
 
   const formatHarga = (number) => {
     const formatter = Intl.NumberFormat("id-ID",{
@@ -120,14 +122,17 @@ const TableMainComponent = (props) => {
           props.page != "history" ?
           <Button variant='outlined' typebtn="add" onClick={handleClick}>+ Tambah {props.btnname}</Button>
           :
-          <Button variant='outlined' typebtn="delete" color="error" onClick={handleClick}>Hapus History</Button>
+          (
+            role == "admin" &&
+            <Button variant='outlined' typebtn="delete" color="error" onClick={handleClick}>Hapus Semua History</Button>
+          )
 
         }
         
       </Stack>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
+      <TableContainer component={Paper} >
+        <Table >
+          <TableHead sx={{backgroundColor:"success.main"}}>
             <TableRow>
                 {
                     props.tablehead.map((item,index) => 

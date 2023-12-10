@@ -159,7 +159,7 @@ export default function LoginView() {
 
       <Stack direction="row" alignItems="center" justifyContent="flex-end" sx={{ my: 3 }}>
         <Link variant="subtitle2" underline="hover" onClick={handleChangeLoginType} className='cursor-pointer'>
-          Masuk Sebagai Siswa
+          Masuk Sebagai {logintype === "petugas" ? "Siswa" : "Petugas"}
         </Link>
       </Stack>
 

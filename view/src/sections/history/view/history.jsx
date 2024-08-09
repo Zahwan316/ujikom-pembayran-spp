@@ -50,7 +50,7 @@ const HistoryView = (props) => {
 
   const handleDeleteAllHistory = async() => {
     try{
-      let res = await axios.delete(`${process.env.REACT_APP_URL_API}history/delete`)
+      let res = await axios.delete(`${import.meta.env.VITE_API_URL}history/delete`)
       setupdater(uuidv4())
       setisload(true)
       setopen(false)
@@ -68,28 +68,28 @@ const HistoryView = (props) => {
       try{
         await new Promise((resolve) => setTimeout(resolve, 1000));
         if(role == "siswa"){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}history/${akun.nisn}`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}history/${akun.nisn}`)
           setpembayaran(res.data.data)
         }
         else{
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}pembayaran`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}pembayaran`)
           setpembayaran(res.data.data)
         }
        
         if(Object.keys(siswa).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa`)
             setsiswa(res.data.data)
         }
         if(Object.keys(spp).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}spp`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}spp`)
             setspp(res.data.data)
         }
         if(Object.keys(petugas).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}petugas`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}petugas`)
             setpetugas(res.data.data)
         }
         if(Object.keys(kelas).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}kelas`)
             setkelas(res.data.data)
         }
       }
@@ -104,7 +104,7 @@ const HistoryView = (props) => {
     const refetchData = async() => {
       try{
         if(isload){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}pembayaran`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}pembayaran`)
           setpembayaran(res.data.data)
           
         }

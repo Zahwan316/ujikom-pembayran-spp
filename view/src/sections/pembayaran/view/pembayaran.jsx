@@ -32,7 +32,7 @@ const PembayaranView = (props) => {
 
   const sendData = async() => {
     try{
-      let res = await axios.post(`${process.env.REACT_APP_URL_API}pembayaran`,forminput)
+      let res = await axios.post(`${import.meta.env.VITE_API_URL}pembayaran`,forminput)
       console.log(res.data)
     }
     catch(e){
@@ -55,11 +55,11 @@ const PembayaranView = (props) => {
     const fetchData = async() => {
       try{
         if(Object.keys(siswa).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa`);
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa`);
           setsiswa(res.data.data)
         }
         if(Object.keys(spp).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}spp`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}spp`)
           setspp(res.data.data)
         }
       }

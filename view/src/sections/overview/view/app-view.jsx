@@ -49,19 +49,19 @@ export default function AppView() {
     const fetchData = async() => {
       try{
         if(Object.keys(petugas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}petugas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}petugas`)
           setpetugas(res.data.data)
         }
         if(Object.keys(siswa).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa`)
           setsiswa(res.data.data)
         }
         if(Object.keys(pembayaran).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}pembayaran`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}pembayaran`)
           setpembayaran(res.data.data)
         }
         if(Object.keys(kelas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}kelas`)
           setkelas(res.data.data)
         }
       }
@@ -103,7 +103,7 @@ export default function AppView() {
             total={kelas.length}
             color="success"
             className="bg-red-500"
-            // icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
+             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_bag.png" />}
           />
         </Grid>
 
@@ -112,7 +112,7 @@ export default function AppView() {
             title="Petugas"
             total={petugas.length}
             color="info"
-            // icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
+             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
         </Grid>
 
@@ -121,7 +121,7 @@ export default function AppView() {
             title="Siswa"
             total={siswa.length}
             color="info"
-            
+            icon={<img alt="icon" src="/assets/icons/glass/ic_glass_users.png" />}
           />
         </Grid>
 
@@ -130,7 +130,7 @@ export default function AppView() {
             title="Transaksi Pembayaran"
             total={pembayaran.length}
             color="error"
-            // icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
+             icon={<img alt="icon" src="/assets/icons/glass/ic_glass_message.png" />}
           />
         </Grid>
 

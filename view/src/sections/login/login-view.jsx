@@ -77,13 +77,13 @@ export default function LoginView() {
     try{
         if(validateInput()){
           if(logintype === "petugas"){
-            let res = await axios.post(`${process.env.REACT_APP_URL_API}login`,forminput)
+            let res = await axios.post(`${import.meta.env.VITE_API_URL}login`,forminput)
             const data = res.data
             Cookies.set("token",data.token)
             console.log(res)
           }
           else if(logintype === "siswa"){
-             let res = await axios.post(`${process.env.REACT_APP_URL_API}login_siswa`,forminput)
+             let res = await axios.post(`${import.meta.env.VITE_API_URL}login_siswa`,forminput)
              const data = res.data
              Cookies.set("token",data.token)
              console.log(res)

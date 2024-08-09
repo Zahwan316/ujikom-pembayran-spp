@@ -35,23 +35,23 @@ export default function Router() {
     const getData = async() => {
       try{
         if(pathname != "/login" && pathname != "/history/siswa"){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}auth/petugas/${token}`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}auth/petugas/${token}`)
           console.log(res)
           setakun(res.data.data)
           setrole(res.data.role)
           if(Object.keys(refpetugas).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}ref_petugas`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}ref_petugas`)
             setrefpetugas(res.data.data)
           }
           
         }
         if(pathname === "/history/siswa"){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}auth/siswa/${token}`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}auth/siswa/${token}`)
           setrole("siswa")
           //console.log(res)
           setakun(res.data.data)
           if(Object.keys(refpetugas).length === 0){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}ref_petugas`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}ref_petugas`)
             setrefpetugas(res.data.data)
           }
         }

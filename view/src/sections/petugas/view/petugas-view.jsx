@@ -38,13 +38,13 @@ const PetugasView = () => {
       let res;
       switch(method){
           case "post":
-              res = await axios.post(`${process.env.REACT_APP_URL_API}petugas`,forminput);
+              res = await axios.post(`${import.meta.env.VITE_API_URL}petugas`,forminput);
               break;
           case "put":
-              res = await axios.put(`${process.env.REACT_APP_URL_API}petugas/${id}`,forminput);
+              res = await axios.put(`${import.meta.env.VITE_API_URL}petugas/${id}`,forminput);
               break;
           case "delete":
-              res = await axios.delete(`${process.env.REACT_APP_URL_API}petugas/${id}`);
+              res = await axios.delete(`${import.meta.env.VITE_API_URL}petugas/${id}`);
               break;
       }
       setupdater(uuidv4());
@@ -77,11 +77,11 @@ const PetugasView = () => {
     const getData = async() => {
       try{
         if(Object.keys(petugas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}petugas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}petugas`)
           setpetugas(res.data.data)
         }
         if(Object.keys(refpetugas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}ref_petugas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}ref_petugas`)
           setrefpetugas(res.data.data)
         }
       }
@@ -96,7 +96,7 @@ const PetugasView = () => {
     const getData = async() => {
       try{
         if(isload){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}petugas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}petugas`)
           setpetugas(res.data.data)
         }
       }
@@ -111,7 +111,7 @@ const PetugasView = () => {
     const getData = async() => {
       try{
         if(editedid && typeform === "edit"){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}petugas/${editedid}`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}petugas/${editedid}`)
           const data = res.data.data
           for(const key in data){
             if(key != "password"){

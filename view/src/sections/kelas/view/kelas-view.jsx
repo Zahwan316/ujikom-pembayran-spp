@@ -39,13 +39,13 @@ const KelasView = () => {
       let res;
       switch(method){
         case "post":
-            res = await axios.post(`${process.env.REACT_APP_URL_API}kelas`,forminput)
+            res = await axios.post(`${import.meta.env.VITE_API_URL}kelas`,forminput)
             break;
         case "put":
-            res = await axios.put(`${process.env.REACT_APP_URL_API}kelas/${id}`,forminput)
+            res = await axios.put(`${import.meta.env.VITE_API_URL}kelas/${id}`,forminput)
             break;
         case "delete":
-            res = await axios.delete(`${process.env.REACT_APP_URL_API}kelas/${id}`,forminput)
+            res = await axios.delete(`${import.meta.env.VITE_API_URL}kelas/${id}`,forminput)
             break;
       }
       setupdater(uuidv4())
@@ -80,7 +80,7 @@ const KelasView = () => {
     const getdata = async() => {
       try{
         if(Object.keys(kelas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+          let res = await axios.get(`${process.env.import.meta.env.VITE_API_URL}kelas`)
           setkelas(res.data.data)
         }
       }
@@ -95,7 +95,7 @@ const KelasView = () => {
     const getdata = async() => {
       try{
         if(isload){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}kelas`)
           setkelas(res.data.data)
         }
       }
@@ -110,7 +110,7 @@ const KelasView = () => {
     const getdata = async() => {
         try{
           if(editedid && typeform === "edit"){
-            let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas/${editedid}`)
+            let res = await axios.get(`${import.meta.env.VITE_API_URL}kelas/${editedid}`)
             const data = res.data.data
             for(const key in data){
                 setforminput(key,data[key])

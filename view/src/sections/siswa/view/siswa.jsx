@@ -68,13 +68,13 @@ const SiswaView = () => {
         let res 
         switch(method){
           case "post":
-              res = await axios.post(`${process.env.REACT_APP_URL_API}siswa`,forminput)
+              res = await axios.post(`${import.meta.env.VITE_API_URL}siswa`,forminput)
               break;
           case "put":
-              res = await axios.put(`${process.env.REACT_APP_URL_API}siswa/${id}`,forminput)
+              res = await axios.put(`${import.meta.env.VITE_API_URL}siswa/${id}`,forminput)
               break;
           case "delete":
-              res = await axios.delete(`${process.env.REACT_APP_URL_API}siswa/${id}`)
+              res = await axios.delete(`${import.meta.env.VITE_API_URL}siswa/${id}`)
               break;
         }
         setupdater(uuidv4())
@@ -111,15 +111,15 @@ const SiswaView = () => {
     const getData = async() => {
       try{
         if(Object.keys(siswa).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa`)
           setsiswa(res.data.data)
         }
         if(Object.keys(spp).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}spp`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}spp`)
           setspp(res.data.data)
         }
         if(Object.keys(kelas).length === 0){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}kelas`)
           setkelas(res.data.data)
         }
       }
@@ -134,13 +134,13 @@ const SiswaView = () => {
     const getData = async() => {
       try{
         if(isload){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa`)
           setsiswa(res.data.data)
 
-          let res_spp = await axios.get(`${process.env.REACT_APP_URL_API}spp`)
+          let res_spp = await axios.get(`${import.meta.env.VITE_API_URL}spp`)
           setspp(res_spp.data.data)
 
-          let res_kelas = await axios.get(`${process.env.REACT_APP_URL_API}kelas`)
+          let res_kelas = await axios.get(`${import.meta.env.VITE_API_URL}kelas`)
           setkelas(res_kelas.data.data)
         }
       }
@@ -155,7 +155,7 @@ const SiswaView = () => {
     const getData = async() => {
       try{
         if(editedid && typeform === "edit"){
-          let res = await axios.get(`${process.env.REACT_APP_URL_API}siswa/${editedid}`)
+          let res = await axios.get(`${import.meta.env.VITE_API_URL}siswa/${editedid}`)
           const data = res.data.data
           for(const key in data){
             if(key !== "password"){

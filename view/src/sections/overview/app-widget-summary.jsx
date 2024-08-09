@@ -16,6 +16,8 @@ export default function AppWidgetSummary({ title, total,className, icon, color =
       spacing={3}
       direction="row"
       className={className}
+      color={"dark"}
+      style={{backgroundColor:"#00A9FF"}}
       sx={{
         px: 3,
         py: 5,
@@ -28,9 +30,9 @@ export default function AppWidgetSummary({ title, total,className, icon, color =
       {icon && <Box sx={{ width: 64, height: 64 }}>{icon}</Box>}
 
       <Stack spacing={0.5}>
-        <Typography variant="h4">{fShortenNumber(total)}</Typography>
+        <Typography variant="h4" sx={{color: "white"}}>{fShortenNumber(total)}</Typography>
 
-        <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
+        <Typography variant="subtitle2" sx={{ color: 'white' }}>
           {title}
         </Typography>
       </Stack>
@@ -44,5 +46,5 @@ AppWidgetSummary.propTypes = {
   sx: PropTypes.object,
   title: PropTypes.string,
   total: PropTypes.number,
-  className:PropTypes.className
+  className:PropTypes.string
 };
